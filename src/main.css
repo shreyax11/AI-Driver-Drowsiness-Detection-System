@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  background: #070a10;
+}
+
+.glass-panel {
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  background: linear-gradient(180deg, rgba(16, 22, 36, 0.92), rgba(10, 15, 26, 0.96));
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+}
+
+.meter {
+  background: conic-gradient(var(--meter-color) calc(var(--value) * 1%), #1b2537 0);
+}
