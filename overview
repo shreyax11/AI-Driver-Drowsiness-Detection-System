@@ -1,0 +1,343 @@
+# AI-Assisted Driver Drowsiness Detection System
+
+## Project Overview
+
+The AI-Assisted Driver Drowsiness Detection System is a real-time driver monitoring solution designed to identify signs of fatigue, drowsiness, and inattention using Computer Vision and Artificial Intelligence. The system continuously analyzes a driver's facial features through a webcam feed and generates alerts when symptoms of fatigue are detected.
+
+The primary objective of this project is to improve road safety by providing early warnings before a driver's condition becomes dangerous.
+
+---
+
+## Problem Statement
+
+Driver fatigue is one of the leading causes of road accidents worldwide. Long driving hours, lack of sleep, and reduced attention can significantly increase the risk of collisions.
+
+Traditional monitoring methods often fail to detect fatigue in real time. This project addresses that challenge by automatically analyzing facial behavior and generating alerts whenever signs of drowsiness are detected.
+
+---
+
+## Technologies Used
+
+### Frontend
+
+* React.js
+* Vite
+* HTML
+* CSS
+* JavaScript
+
+### Backend
+
+* Python
+* FastAPI
+
+### Computer Vision & AI
+
+* OpenCV
+* MediaPipe Face Mesh
+
+### Development Tools
+
+* GitHub
+* VS Code
+* AI-Assisted Development Tools
+
+---
+
+## System Architecture
+
+The project follows a client-server architecture.
+
+```text
+Webcam
+   ↓
+OpenCV Frame Capture
+   ↓
+MediaPipe Face Landmark Detection
+   ↓
+Feature Extraction
+(Eyes, Mouth, Attention)
+   ↓
+Drowsiness Analysis
+   ↓
+Risk Score Generation
+   ↓
+FastAPI Backend
+   ↓
+React Dashboard
+   ↓
+Alerts & Monitoring
+```
+
+---
+
+## How the System Works
+
+### Step 1: Video Capture
+
+The system accesses the webcam and continuously captures video frames.
+
+OpenCV is responsible for reading frames from the camera and preparing them for processing.
+
+---
+
+### Step 2: Facial Landmark Detection
+
+MediaPipe Face Mesh detects facial landmarks on every frame.
+
+These landmarks represent important points on the face such as:
+
+* Eyes
+* Eyelids
+* Mouth
+* Nose
+* Jawline
+* Facial boundaries
+
+The detected landmarks allow the system to understand facial movements and expressions in real time.
+
+---
+
+### Step 3: Eye Analysis
+
+The system monitors eye openness using the Eye Aspect Ratio (EAR).
+
+#### Purpose
+
+To determine whether the driver's eyes are open or closed.
+
+#### Logic
+
+* Normal open eyes produce a healthy EAR value.
+* Closed eyes produce a lower EAR value.
+* Prolonged eye closure increases fatigue risk.
+
+Example:
+
+```text
+Eyes Open
+EAR = High
+
+Eyes Closed
+EAR = Low
+```
+
+If the EAR remains below a threshold for a certain period, the system interprets this as a possible sign of drowsiness.
+
+---
+
+### Step 4: Blink Detection
+
+The project continuously tracks blinking activity.
+
+The system calculates:
+
+```text
+Blinks Per Minute
+```
+
+Blink behavior provides useful information about driver alertness.
+
+Abnormal blinking patterns may indicate fatigue or loss of concentration.
+
+---
+
+### Step 5: Yawn Detection
+
+The system evaluates mouth opening using the Mouth Aspect Ratio (MAR).
+
+#### Purpose
+
+To detect yawning behavior.
+
+#### Logic
+
+```text
+Normal Mouth Opening
+MAR = Low
+
+Yawning
+MAR = High
+```
+
+Frequent yawning contributes to the overall fatigue score.
+
+---
+
+### Step 6: Attention Monitoring
+
+The project monitors whether the driver's face remains properly aligned and visible.
+
+Indicators include:
+
+* Face visibility
+* Head orientation
+* Attention level
+* Facial tracking consistency
+
+When the driver looks away from the road for extended periods, attention decreases and risk increases.
+
+---
+
+### Step 7: Risk Score Calculation
+
+The system combines multiple indicators:
+
+```text
+Eye Closure
++
+Blink Behavior
++
+Yawning Frequency
++
+Attention Level
+```
+
+to generate a real-time fatigue risk score.
+
+Example:
+
+```text
+Risk = 11%
+Risk = 63%
+Risk = 71%
+```
+
+Higher values indicate a greater likelihood of driver fatigue.
+
+---
+
+## Alert System
+
+The system implements a multi-level warning mechanism.
+
+### Level 1: Visual Alert
+
+The dashboard displays warning indicators when fatigue symptoms begin to appear.
+
+---
+
+### Level 2: Audio Alert
+
+The browser generates an audible warning to capture the driver's attention.
+
+---
+
+### Level 3: Voice Warning
+
+Text-to-speech functionality can provide spoken safety reminders when fatigue becomes critical.
+
+---
+
+## Dashboard Features
+
+### Live Driver Feed
+
+Displays:
+
+* Webcam stream
+* Facial landmarks
+* Driver state
+* Risk percentage
+
+---
+
+### Risk Monitoring Panel
+
+Shows:
+
+* Current fatigue risk
+* EAR values
+* MAR values
+* Attention score
+* Processing performance (FPS)
+
+---
+
+### Alert History
+
+Records previous warning events and fatigue detections for monitoring purposes.
+
+---
+
+### Safety Insights
+
+Provides analytical information regarding:
+
+* Eye closure trends
+* Attention patterns
+* Fatigue progression
+* Driver behavior observations
+
+---
+
+## Backend Functionality
+
+The FastAPI backend performs the following tasks:
+
+* Processes webcam data
+* Runs facial landmark detection
+* Calculates fatigue metrics
+* Generates risk scores
+* Provides API endpoints for the frontend dashboard
+
+Example endpoints:
+
+```text
+/video-feed
+/metrics
+```
+
+These endpoints allow the React frontend to receive live updates.
+
+---
+
+## Frontend Functionality
+
+The React frontend is responsible for:
+
+* Displaying the dashboard
+* Showing live metrics
+* Visualizing fatigue levels
+* Presenting alerts and warnings
+* Updating information in real time
+
+The dashboard continuously requests updated data from the FastAPI backend.
+
+---
+
+## Key Features
+
+* Real-time driver monitoring
+* Facial landmark detection
+* Eye closure analysis
+* Blink rate tracking
+* Yawn detection
+* Attention monitoring
+* Fatigue risk scoring
+* Multi-level alert system
+* Interactive dashboard
+* Live safety analytics
+
+---
+
+## Learning Outcomes
+
+Through this project, I gained exposure to:
+
+* Computer Vision fundamentals
+* Facial landmark detection
+* Real-time video processing
+* REST API development
+* Frontend-backend integration
+* AI-assisted software development workflows
+* Dashboard design and data visualization
+* GitHub project management and documentation
+
+---
+
+## Project Contribution Statement
+
+This project was developed with significant assistance from AI-powered development tools for code generation, debugging, implementation support, and architecture guidance. My role included project setup, execution, testing, integration, GitHub deployment, documentation, validation of outputs, and understanding the overall system workflow and architecture.
+
+The project demonstrates the integration of Artificial Intelligence, Computer Vision, Backend Development, and Frontend Engineering to solve a real-world road safety problem.
